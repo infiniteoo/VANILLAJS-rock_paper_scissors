@@ -55,49 +55,58 @@ function getWinner(p, c) {
 };
 
 function showWinner(winner, computerChoice) {
-    if(winner === 'player'){
-        // increment player score
-        scoreboard.player++;
-        // show modal result
-        result.innerHTML = `
+  if (winner === "player") {
+    // increment player score
+    scoreboard.player++;
+    // show modal result
+    result.innerHTML = `
         <h1 class="text-win">You Win</h1>
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
         <p>Computer chose <strong>${computerChoice}</strong></p> 
         
         `;
-
-    } else if (winner === 'computer'){
-         // increment computer score
-         scoreboard.computer++;
-         // show modal result
-         result.innerHTML = `
+  } else if (winner === "computer") {
+    // increment computer score
+    scoreboard.computer++;
+    // show modal result
+    result.innerHTML = `
          <h1 class="text-lose">You Lose</h1>
          <i class="fas fa-hand-${computerChoice} fa-10x"></i>
          <p>Computer chose <strong>${computerChoice}</strong></p> 
          
          `;
-
-
-    } else {
-        result.innerHTML = `
+  } else {
+    result.innerHTML = `
         <h1>It's a Draw</h1>
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
         <p>Computer chose <strong>${computerChoice}</strong></p> 
         
         `;
+  }
 
-    }
+  // show score
 
-    // show score
-
-    score.innerHTML = `
+  score.innerHTML = `
     
     <p>Player: ${scoreboard.player}</p>
     <p>Computer: ${scoreboard.computer}</p>
 
     `;
 
-    modal.style.display = 'block';
+  modal.style.display = "block";
+}
+
+// restart game
+function restartGame() {
+  scoreboard.player = 0;
+  scoreboard.computer = 0;
+  score.innerHTML = `
+    
+    <p>Player: 0</p>
+    <p>Computer: 0</p>
+     
+    
+    `;
 }
 
 // clear modal
@@ -111,3 +120,4 @@ function clearModal(e){
 // event listeners
 choices.forEach(choice => choice.addEventListener('click', play));
 window.addEventListener('click', clearModal);
+restart.addEventListener('click', restartGame);
