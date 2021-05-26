@@ -11,11 +11,25 @@ const scoreboard = {
 
 // play game
 function play(e){
-    console.log(e.target.id);
-
-
+    restart.style.display = "inline-block";
+    const playerChoice = e.target.id;
+    const computerChoice = getComputerChoice();
+    console.log(playerChoice, computerChoice);
+    
 }
 
+// get computer's choice
+function getComputerChoice() {
+    const rand = Math.random();
+    if(rand < 0.34){
+        return 'rock';
+    } else if (rand <= 0.67) {
+        return 'paper';
+    } else {
+        return 'scissors';
+    };
+}
 
 // event listeners
 choices.forEach(choice => choice.addEventListener('click', play));
+
