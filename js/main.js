@@ -107,6 +107,8 @@ function restartGame() {
      
     
     `;
+
+    restart.style.display = 'none';
 }
 
 // clear modal
